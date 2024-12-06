@@ -22,15 +22,6 @@ export const Box = styled.div`
   width: 100%;
 `;
 
-export const Button = styled.button`
-  padding: 15px;
-  border-radius: 10px;
-  background: #8cb1f5;
-  color: #ffffff;
-  border: 0;
-  cursor: pointer;
-`;
-
 export const ContentBrand = styled.div`
   display: flex;
   align-items: center;
@@ -44,4 +35,10 @@ export const Text = styled.h2`
   margin-bottom: 90px;
   color: #4e4e4e;
   font-size: 36px;
+`;
+
+export const ErrorMessage = styled.p`
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 5px;
 `;
