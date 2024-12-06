@@ -22,17 +22,6 @@ export const Box = styled.div`
   width: 100%;
 `;
 
-export const Input = styled.input`
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #d9d9d9;
-  outline: none;
-
-  &::placeholder {
-    color: #d1d1d1;
-  }
-`;
-
 export const Button = styled.button`
   padding: 15px;
   border-radius: 10px;

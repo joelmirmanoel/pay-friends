@@ -1,6 +1,7 @@
-import { Box, Button, Container, ContentBrand, ContentForm, Input, Text } from './styled';
+import { Box, Button, Container, ContentBrand, ContentForm, Text } from './styled';
 import brand from '../../assets/brand.svg';
 import logo from '../../assets/PayFriends.svg';
+import { Input } from '../../components';
 
 export function Home() {
   return (
@@ -9,8 +10,9 @@ export function Home() {
         <Box>
           <img src={logo} alt="logo PayFriends" width={160} height={30} />
           <Text>Bem vindo de volta</Text>
-          <Input placeholder="Email" />
+          <Input placeholder="Email" isError={true} />
           <Input
+            isError={false}
             placeholder="Senha"
             style={{
               marginTop: '20px',
