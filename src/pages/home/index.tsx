@@ -7,7 +7,10 @@ import { useState } from 'react';
 export function Home() {
   const [emailValue, setEmailValue] = useState<string>('');
   const [passwordlValue, setPasswordValue] = useState<string>('');
-  const [error, setError] = useState<boolean>(false);
+  const [errorLogin, setErrorLogin] = useState<boolean>(false);
+  const [errorEmail, setErrorEmail] = useState<boolean>(false);
+  const emailCadastrado = 'joelmirmanoel80@gmail.com';
+  const senhaCadastrada = '123456';
 
   function isValidEmail(value: string) {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
@@ -16,10 +19,16 @@ export function Home() {
 
   function handleClickButton() {
     if (isValidEmail(emailValue)) {
-      setError(false);
+      if (emailValue === emailCadastrado && passwordlValue === senhaCadastrada) {
+        setErrorLogin(false);
+      } else {
+        setErrorLogin(true);
+      }
+      setErrorEmail(false);
     } else {
-      setError(true);
+      setErrorEmail(true);
     }
+
     console.log('Hello', emailValue, passwordlValue);
   }
 
@@ -33,19 +42,20 @@ export function Home() {
             placeholder="Email"
             value={emailValue}
             onChange={event => setEmailValue(event.target.value)}
-            isError={error}
+            isError={errorLogin || errorEmail}
           />
           <Input
             placeholder="Senha"
             value={passwordlValue}
             onChange={event => setPasswordValue(event.target.value)}
-            isError={error}
+            isError={errorLogin}
             style={{
               marginTop: '15px',
             }}
           />
 
-          {error && <ErrorMessage>Email e/ou senha inválido.</ErrorMessage>}
+          {errorLogin && <ErrorMessage>Email e/ou senha inválido.</ErrorMessage>}
+          {errorEmail && <ErrorMessage>Email inválido.</ErrorMessage>}
 
           <Button
             onClick={handleClickButton}
