@@ -1,7 +1,7 @@
 import { Box, Container, ContentBrand, ContentForm, ErrorMessage, Text } from './styled';
-import brand from '../../assets/brand.svg';
 import logo from '../../assets/PayFriends.svg';
-import { Input, Button } from '../../components';
+import brand from '../../assets/brand.svg';
+import { Input, Button, Image } from '../../components';
 import { useState } from 'react';
 
 export function Home() {
@@ -27,7 +27,7 @@ export function Home() {
     <Container>
       <ContentForm>
         <Box>
-          <img src={logo} alt="logo PayFriends" width={160} height={30} />
+          <Image src={logo} alt="logo PayFriends" width={160} height={30} />
           <Text>Bem vindo de volta</Text>
           <Input
             placeholder="Email"
@@ -58,7 +58,7 @@ export function Home() {
         </Box>
       </ContentForm>
       <ContentBrand>
-        <img src={brand} alt="brand" width={'87%'} height={'87%'} />
+        <Image src={brand} alt="brand" width={'87%'} height={'87%'} />
       </ContentBrand>
     </Container>
   );
