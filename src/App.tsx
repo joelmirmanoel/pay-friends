@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GlobalStyles from './theme/globalStyles';
-import { Home } from './pages';
+import { Login, Home } from './pages';
 
 function App() {
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   return (
     <>
       <GlobalStyles />
-      <Home />
+      {isLogin ? <Home /> : <Login setIsLogin={setIsLogin} />}
     </>
   );
 }
