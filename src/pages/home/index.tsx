@@ -2,6 +2,7 @@ import { Container, Header, Content, Title, Box } from './styled';
 import logoWhite from '../../assets/PayFriendsWhite.svg';
 import Vector from '../../assets/Vector.svg';
 import Pago from '../../assets/Pago.svg';
+import Select from '../../assets/Rectangle.svg';
 import { Image, Button, Input } from '../../components';
 
 export function Home() {
@@ -15,11 +16,13 @@ export function Home() {
         <Button style={{ background: '#4079C0', paddingLeft: 50, paddingRight: 50 }}>ADICIONAR PAGAMENTO</Button>
       </Content>
       <Box>
-        <Input isError={false} style={{ width: 333 }} placeholder="Pesquisar por usuário" />
-        <Button style={{ marginLeft: 19 }}>
-          {' '}
-          <Image src={Vector} alt="PayFriends" width={20} height={18} /> Filtrar
-        </Button>
+        <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
+          <Input isError={false} style={{ width: 333 }} placeholder="Pesquisar por usuário" />
+          <Button style={{ marginLeft: 19, alignItems: 'center', display: 'flex' }}>
+            {' '}
+            <Image src={Vector} alt="PayFriends" width={20} height={18} /> Filtrar
+          </Button>
+        </div>
         <table>
           <thead>
             <tr>
@@ -37,7 +40,17 @@ export function Home() {
             <td>23 Jun 2020</td>
             <td>R$ 100,00</td>
             <td>
-              <Image src={Pago} alt="PayFriends" width={16} height={11} />
+              <Image src={Pago} alt="PayFriends" width={20} height={20} style={{ background: '#4079C0' }} />
+            </td>
+          </tbody>
+
+          <tbody style={{ marginLeft: 27, marginRight: 27 }}>
+            <td>Claudia</td>
+            <td>Professor 2</td>
+            <td>23 Jun 2020</td>
+            <td>R$ 100,00</td>
+            <td>
+              <Image src={Select} alt="PayFriends" width={20} height={20} />
             </td>
           </tbody>
         </table>

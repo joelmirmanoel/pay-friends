@@ -27,7 +27,7 @@ export const Content = styled.div`
 `;
 
 export const Box = styled.div`
-  //width: ;
+  //width: 100%;
   //display: flex;
   background: #ffffff;
   justify-content: space-between;
@@ -35,11 +35,14 @@ export const Box = styled.div`
   margin-right: 80px;
   padding-top: 27px;
   border-radius: 10px;
+  //padding-left: 27px;
 
   table {
     width: 100%;
+    //padding-left: 27px;
     padding-top: 30px;
     padding-bottom: 21px;
+    border-spacing: 0;
 
     th {
       font-family: 'Roboto';
@@ -61,7 +64,7 @@ export const Box = styled.div`
       text-align: left;
       padding-top: 30px;
       padding-bottom: 21px;
-      margin-top: 10px;
+      background: #ffffff;
     }
   }
 `;
