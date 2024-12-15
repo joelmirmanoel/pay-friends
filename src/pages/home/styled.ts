@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import SearchIcon from '@mui/icons-material/Search';
+import { Button } from '../../components';
 
 export const Container = styled.div`
   width: 100%;
+  height: 100vh;
   background: #ededed;
 `;
 
@@ -36,35 +39,90 @@ export const Box = styled.div`
   padding-top: 27px;
   border-radius: 10px;
   //padding-left: 27px;
+`;
 
-  table {
-    width: 100%;
-    //padding-left: 27px;
-    padding-top: 30px;
-    padding-bottom: 21px;
-    border-spacing: 0;
+export const Table = styled.table`
+  min-width: 100%;
+  /* margin-left: 20px; */
+  border-spacing: 0;
+  text-align: start;
+`;
 
-    th {
-      font-family: 'Roboto';
-      font-size: 24px;
-      font-weight: 400;
-      text-align: left;
-    }
+export const TableHeaderContent = styled.th`
+  text-align: start;
+  padding: 15px 25px;
+`;
+
+export const ContentRowImpar = styled.td`
+  background: #fff;
+  padding: 15px 25px;
+`;
+
+export const ContentRowPar = styled.td`
+  background: #c1c1c1;
+  padding: 15px 25px;
+`;
+
+export const Checkbox = styled.input`
+  width: 20px;
+  height: 20px;
+  /* accent-color: #8cb1f5; */
+  background-color: #000;
+  border: 1px solid red;
+`;
+export const Linha = styled.div`
+  width: 100%;
+  height: 1px;
+  //display: flex;
+  background: #c1c1c1;
+  margin: 0;
+  border: 0;
+`;
+
+export const Busca = styled.div`
+  border-color: #ededed;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ededed;
+  outline: none;
+  display: flex;
+  align-items: center;
+
+  input {
+    border: none;
+    outline: none;
+    width: 333px;
+    background-color: transparent;
   }
 
-  tbody {
-    //width: 100%;
-    //padding-top: 30px;
-    //padding-bottom: 21px;
-
-    td {
-      font-family: 'Roboto';
-      font-size: 20px;
-      font-weight: 400;
-      text-align: left;
-      padding-top: 30px;
-      padding-bottom: 21px;
-      background: #ffffff;
-    }
+  &::placeholder {
+    color: #d1d1d1;
   }
+`;
+
+export const Lupa = styled(SearchIcon).attrs({
+  sx: { fontSize: 18 },
+})`
+  color: #d1d1d1;
+  //font-size: 18px;
+`;
+
+export const ButtonAdd = styled(Button)`
+  background: #4079c0;
+  padding-left: 50px;
+  padding-right: 50px;
+`;
+
+export const Buttonfilter = styled(Button)`
+  margin-left: 19px;
+  align-items: center;
+  display: flex;
+`;
+
+export const ContentFilter = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
 `;

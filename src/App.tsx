@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      {isLogin ? <Home /> : <Login setIsLogin={setIsLogin} />}
+      {true ? <Home /> : <Login setIsLogin={setIsLogin} />}
     </>
   );
 }

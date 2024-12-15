@@ -1,9 +1,24 @@
-import { Container, Header, Content, Title, Box } from './styled';
+import {
+  Container,
+  Header,
+  Content,
+  Title,
+  Box,
+  Table,
+  ContentRowImpar,
+  ContentRowPar,
+  TableHeaderContent,
+  Checkbox,
+  Linha,
+  Busca,
+  Lupa,
+  ButtonAdd,
+  Buttonfilter,
+  ContentFilter,
+} from './styled';
 import logoWhite from '../../assets/PayFriendsWhite.svg';
 import Vector from '../../assets/Vector.svg';
-import Pago from '../../assets/Pago.svg';
-import Select from '../../assets/Rectangle.svg';
-import { Image, Button, Input } from '../../components';
+import { Image } from '../../components';
 
 export function Home() {
   return (
@@ -13,47 +28,57 @@ export function Home() {
       </Header>
       <Content>
         <Title>Meus pagamentos</Title>
-        <Button style={{ background: '#4079C0', paddingLeft: 50, paddingRight: 50 }}>ADICIONAR PAGAMENTO</Button>
+        <ButtonAdd>ADICIONAR PAGAMENTO</ButtonAdd>
       </Content>
       <Box>
-        <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
-          <Input isError={false} style={{ width: 333 }} placeholder="Pesquisar por usuário" />
-          <Button style={{ marginLeft: 19, alignItems: 'center', display: 'flex' }}>
-            {' '}
+        <ContentFilter>
+          <Busca>
+            <input placeholder="Pesquisar..." />
+            <Lupa />
+          </Busca>
+
+          <Buttonfilter>
             <Image src={Vector} alt="PayFriends" width={20} height={18} /> Filtrar
-          </Button>
-        </div>
-        <table>
+          </Buttonfilter>
+        </ContentFilter>
+
+        <Table>
           <thead>
             <tr>
-              <th>Usuário</th>
-              <th>Título</th>
-              <th>Data</th>
-              <th>Valor</th>
-              <th>Pago</th>
+              <TableHeaderContent>Usuário</TableHeaderContent>
+              <TableHeaderContent>Título</TableHeaderContent>
+              <TableHeaderContent>Data</TableHeaderContent>
+              <TableHeaderContent>Valor</TableHeaderContent>
+              <TableHeaderContent>Pago</TableHeaderContent>
             </tr>
           </thead>
+        </Table>
 
+        <Linha />
+
+        <Table>
           <tbody>
-            <td>Claudia</td>
-            <td>Professor 1</td>
-            <td>23 Jun 2020</td>
-            <td>R$ 100,00</td>
-            <td>
-              <Image src={Pago} alt="PayFriends" width={20} height={20} style={{ background: '#4079C0' }} />
-            </td>
-          </tbody>
+            <tr>
+              <ContentRowImpar>Claudia</ContentRowImpar>
+              <ContentRowImpar>Professor 1</ContentRowImpar>
+              <ContentRowImpar>23 Jun 2020</ContentRowImpar>
+              <ContentRowImpar>R$ 100,00</ContentRowImpar>
+              <ContentRowImpar>
+                <Checkbox type="checkbox" />
+              </ContentRowImpar>
+            </tr>
 
-          <tbody style={{ marginLeft: 27, marginRight: 27 }}>
-            <td>Claudia</td>
-            <td>Professor 2</td>
-            <td>23 Jun 2020</td>
-            <td>R$ 100,00</td>
-            <td>
-              <Image src={Select} alt="PayFriends" width={20} height={20} />
-            </td>
+            <tr style={{ background: '#c1c1c1' }}>
+              <ContentRowPar>Raposo</ContentRowPar>
+              <ContentRowPar>Professor 1</ContentRowPar>
+              <ContentRowPar>23 Jun 2020</ContentRowPar>
+              <ContentRowPar>R$ 100,00</ContentRowPar>
+              <ContentRowPar>
+                <Checkbox type="checkbox" />
+              </ContentRowPar>
+            </tr>
           </tbody>
-        </table>
+        </Table>
       </Box>
     </Container>
   );
