@@ -20,7 +20,11 @@ import logoWhite from '../../assets/PayFriendsWhite.svg';
 import Vector from '../../assets/Vector.svg';
 import { Image } from '../../components';
 
-export function Home() {
+interface IHomeProps {
+  handleOpenAddPaymentModal: () => void;
+}
+
+export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
   return (
     <Container>
       <Header>
@@ -28,7 +32,7 @@ export function Home() {
       </Header>
       <Content>
         <Title>Meus pagamentos</Title>
-        <ButtonAdd>ADICIONAR PAGAMENTO</ButtonAdd>
+        <ButtonAdd onClick={handleOpenAddPaymentModal}>ADICIONAR PAGAMENTO</ButtonAdd>
       </Content>
       <Box>
         <ContentFilter>
