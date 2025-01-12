@@ -4,7 +4,7 @@ import { Button } from '../../components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #ededed;
 `;
 
@@ -30,20 +30,17 @@ export const Content = styled.div`
 `;
 
 export const Box = styled.div`
-  //width: 100%;
-  //display: flex;
   background: #ffffff;
   justify-content: space-between;
   margin-left: 80px;
   margin-right: 80px;
   padding-top: 27px;
   border-radius: 10px;
-  //padding-left: 27px;
+  overflow-y: auto;
 `;
 
 export const Table = styled.table`
   min-width: 100%;
-  /* margin-left: 20px; */
   border-spacing: 0;
   text-align: start;
 `;

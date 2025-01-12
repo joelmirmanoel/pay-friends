@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PaymentProvider } from './hooks/usePayment';
 import GlobalStyles from './theme/globalStyles';
 import { Login, Home } from './pages';
 import { AddPaymentModal } from './components';
@@ -14,11 +15,11 @@ function App() {
     setIsAddPaymentModalOpen(false);
   }
   return (
-    <>
+    <PaymentProvider>
       <GlobalStyles />
-      {true ? <Home handleOpenAddPaymentModal={handleOpenAddPaymentModal} /> : <Login setIsLogin={setIsLogin} />}
+      {isLogin ? <Home handleOpenAddPaymentModal={handleOpenAddPaymentModal} /> : <Login setIsLogin={setIsLogin} />}
       <AddPaymentModal isOpen={isAddPaymentModalOpen} onRequestClose={handleCloseAddPaymentModal} />
-    </>
+    </PaymentProvider>
   );
 }
 

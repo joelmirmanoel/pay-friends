@@ -1,3 +1,5 @@
+import React from 'react';
+import { usePayment } from '../../hooks/usePayment';
 import {
   Container,
   Header,
@@ -25,6 +27,9 @@ interface IHomeProps {
 }
 
 export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
+  const context = usePayment();
+  const paymentList = context?.listPayment();
+
   return (
     <Container>
       <Header>
@@ -62,25 +67,31 @@ export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
 
         <Table>
           <tbody>
-            <tr>
-              <ContentRowImpar>Claudia</ContentRowImpar>
-              <ContentRowImpar>Professor 1</ContentRowImpar>
-              <ContentRowImpar>23 Jun 2020</ContentRowImpar>
-              <ContentRowImpar>R$ 100,00</ContentRowImpar>
-              <ContentRowImpar>
-                <Checkbox type="checkbox" />
-              </ContentRowImpar>
-            </tr>
-
-            <tr style={{ background: '#c1c1c1' }}>
-              <ContentRowPar>Raposo</ContentRowPar>
-              <ContentRowPar>Professor 1</ContentRowPar>
-              <ContentRowPar>23 Jun 2020</ContentRowPar>
-              <ContentRowPar>R$ 100,00</ContentRowPar>
-              <ContentRowPar>
-                <Checkbox type="checkbox" />
-              </ContentRowPar>
-            </tr>
+            {paymentList?.map((item, index) => (
+              <React.Fragment key={index}>
+                {index % 2 === 0 ? (
+                  <tr>
+                    <ContentRowImpar>{item.usuario}</ContentRowImpar>
+                    <ContentRowImpar>{item.titulo}</ContentRowImpar>
+                    <ContentRowImpar>{item.data}</ContentRowImpar>
+                    <ContentRowImpar>R$ {item.valor}</ContentRowImpar>
+                    <ContentRowImpar>
+                      <Checkbox type="checkbox" />
+                    </ContentRowImpar>
+                  </tr>
+                ) : (
+                  <tr style={{ background: '#c1c1c1' }}>
+                    <ContentRowPar>{item.usuario}</ContentRowPar>
+                    <ContentRowPar>{item.titulo}</ContentRowPar>
+                    <ContentRowPar>{item.data}</ContentRowPar>
+                    <ContentRowPar>R$ {item.valor}</ContentRowPar>
+                    <ContentRowPar>
+                      <Checkbox type="checkbox" />
+                    </ContentRowPar>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
           </tbody>
         </Table>
       </Box>

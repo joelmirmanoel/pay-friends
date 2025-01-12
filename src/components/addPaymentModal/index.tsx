@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import { usePayment } from '../../hooks/usePayment';
 import { Input, Button } from '../';
 import { ContentButton, ContentInput, Title } from './styled';
 import { useState } from 'react';
@@ -14,8 +15,16 @@ export function AddPaymentModal({ isOpen, onRequestClose }: IAddPaymentModalProp
   const [valor, setValor] = useState<string>('');
   const [titulo, setTitulo] = useState<string>('');
 
+  const context = usePayment();
+
   function handleCreatePayment() {
-    <p></p>;
+    const payment = { usuario, data, valor, titulo, isPayment: false };
+    context?.createPayment(payment);
+    setUsuario('');
+    setData('');
+    setValor('');
+    setTitulo('');
+    onRequestClose();
   }
 
   return (

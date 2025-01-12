@@ -8,9 +8,10 @@ const GlobalStyles = createGlobalStyle`
   }
   html,
   body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     font-weight: 400;
+    background: #ededed;
   }
 
   .react-modal-overlay {
