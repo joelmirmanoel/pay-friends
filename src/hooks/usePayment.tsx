@@ -1,6 +1,7 @@
 import { createContext, useState, ReactNode, useContext } from 'react';
 
-interface IPayment {
+export interface IPayment {
+  id: number;
   usuario: string;
   data: string;
   valor: string;
@@ -15,7 +16,7 @@ interface IPaymentProvider {
 interface IPaymentContextType {
   payments: IPayment[];
   createPayment: (payment: IPayment) => void;
-  updatePayment: () => void;
+  updatePayment: (id: number, updatePayment: IPayment) => void;
   listPayment: () => IPayment[];
   deletePayment: () => void;
 }
@@ -26,10 +27,14 @@ export function PaymentProvider({ children }: IPaymentProvider) {
   const [payments, setPayments] = useState<IPayment[]>([]);
 
   function createPayment(payment: IPayment) {
-    setPayments(prevPayments => [...prevPayments, payment]);
+    setPayments(prevPayments => [...prevPayments, { ...payment }]);
   }
 
-  function updatePayment() {}
+  function updatePayment(id: number, updatePayment: IPayment) {
+    setPayments(prevPayments =>
+      prevPayments.map(payment => (payment.id === id ? { ...payment, ...updatePayment } : payment)),
+    );
+  }
 
   function listPayment() {
     return payments;

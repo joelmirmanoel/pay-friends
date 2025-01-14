@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePayment } from '../../hooks/usePayment';
+import { usePayment, IPayment } from '../../hooks/usePayment';
 import {
   Container,
   Header,
@@ -23,13 +23,18 @@ import Vector from '../../assets/Vector.svg';
 import { Image } from '../../components';
 
 interface IHomeProps {
-  handleOpenAddPaymentModal: () => void;
+  handleOpenAddPaymentModal: (payment: IPayment | null) => void;
 }
 
 export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
   const context = usePayment();
   const paymentList = context?.listPayment();
 
+  function HandleRowClick(payment: IPayment) {
+    handleOpenAddPaymentModal(payment);
+  }
+
+  console.log('list', paymentList);
   return (
     <Container>
       <Header>
@@ -37,7 +42,7 @@ export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
       </Header>
       <Content>
         <Title>Meus pagamentos</Title>
-        <ButtonAdd onClick={handleOpenAddPaymentModal}>ADICIONAR PAGAMENTO</ButtonAdd>
+        <ButtonAdd onClick={() => handleOpenAddPaymentModal(null)}>ADICIONAR PAGAMENTO</ButtonAdd>
       </Content>
       <Box>
         <ContentFilter>
@@ -70,7 +75,7 @@ export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
             {paymentList?.map((item, index) => (
               <React.Fragment key={index}>
                 {index % 2 === 0 ? (
-                  <tr>
+                  <tr onClick={() => HandleRowClick(item)}>
                     <ContentRowImpar>{item.usuario}</ContentRowImpar>
                     <ContentRowImpar>{item.titulo}</ContentRowImpar>
                     <ContentRowImpar>{item.data}</ContentRowImpar>
@@ -80,7 +85,7 @@ export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
                     </ContentRowImpar>
                   </tr>
                 ) : (
-                  <tr style={{ background: '#c1c1c1' }}>
+                  <tr style={{ background: '#c1c1c1' }} onClick={() => HandleRowClick(item)}>
                     <ContentRowPar>{item.usuario}</ContentRowPar>
                     <ContentRowPar>{item.titulo}</ContentRowPar>
                     <ContentRowPar>{item.data}</ContentRowPar>
