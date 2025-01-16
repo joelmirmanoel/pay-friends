@@ -20,7 +20,7 @@ function App() {
   return (
     <PaymentProvider>
       <GlobalStyles />
-      {true ? <Home handleOpenAddPaymentModal={handleOpenAddPaymentModal} /> : <Login setIsLogin={setIsLogin} />}
+      {isLogin ? <Home handleOpenAddPaymentModal={handleOpenAddPaymentModal} /> : <Login setIsLogin={setIsLogin} />}
       <AddPaymentModal
         isOpen={isAddPaymentModalOpen}
         onRequestClose={handleCloseAddPaymentModal}

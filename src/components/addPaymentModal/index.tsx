@@ -24,11 +24,13 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
       setData(selectedPayment.data);
       setValor(selectedPayment.valor);
       setTitulo(selectedPayment.titulo);
+      //setId(selectedPayment.id); // Atribuindo o ID selecionado
     } else {
       setUsuario('');
       setData('');
       setValor('');
       setTitulo('');
+      //setId(0); // Resetando o ID
     }
   }, [selectedPayment, isOpen]);
 
@@ -46,11 +48,17 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
       setTitulo('');
       setId(newId);
     }
+    console.log(JSON.stringify(handleSavePayment, null, 2));
     onRequestClose();
   }
 
-  //function de excluir
-  //ela seliciona o id
+  // Função de excluir pagamento
+  function handleDeletePayment() {
+    if (selectedPayment) {
+      context?.deletePayment(selectedPayment.id); // Excluindo o pagamento com base no id
+      onRequestClose(); // Fecha o modal após a exclusão
+    }
+  }
 
   return (
     <Modal
@@ -59,7 +67,7 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
-      <Title>Adicionar Pagamento</Title>
+      <Title>{selectedPayment ? 'Atualizar' : 'Adicionar'} Pagamento</Title>
       <ContentInput>
         {/* <Input isError={false} placeholder="id" value={id} onChange={event => setId(event.target.value)} /> */}
 
@@ -77,9 +85,11 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
         <Button style={{ color: '#ffffff', background: '#4079C0' }} onClick={handleSavePayment}>
           Salvar
         </Button>
-        <Button style={{ color: '#4E4E4E', background: '#EDEDED' }} onClick={onRequestClose}>
-          Cancelar
-        </Button>
+        {selectedPayment && (
+          <Button style={{ color: '#4E4E4E', background: '#EDEDED' }} onClick={handleDeletePayment}>
+            Excluir
+          </Button>
+        )}
       </ContentButton>
     </Modal>
   );

@@ -45,7 +45,7 @@ export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
         <ButtonAdd onClick={() => handleOpenAddPaymentModal(null)}>ADICIONAR PAGAMENTO</ButtonAdd>
       </Content>
       <Box>
-        <ContentFilter>
+        {/* <ContentFilter>
           <Busca>
             <input placeholder="Pesquisar..." />
             <Lupa />
@@ -54,7 +54,7 @@ export function Home({ handleOpenAddPaymentModal }: IHomeProps) {
           <Buttonfilter>
             <Image src={Vector} alt="PayFriends" width={20} height={18} /> Filtrar
           </Buttonfilter>
-        </ContentFilter>
+        </ContentFilter> */}
 
         <Table>
           <thead>

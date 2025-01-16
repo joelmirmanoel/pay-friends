@@ -18,7 +18,7 @@ interface IPaymentContextType {
   createPayment: (payment: IPayment) => void;
   updatePayment: (id: number, updatePayment: IPayment) => void;
   listPayment: () => IPayment[];
-  deletePayment: () => void;
+  deletePayment: (payment: number) => void;
 }
 
 const PaymentContext = createContext<IPaymentContextType | undefined>(undefined);
@@ -40,8 +40,12 @@ export function PaymentProvider({ children }: IPaymentProvider) {
     return payments;
   }
 
-  function deletePayment() {}
+  // Função para excluir pagamento
+  function deletePayment(paymentId: number) {
+    setPayments(payments.filter(payment => payment.id !== paymentId));
+  }
 
+  // Adicionando a função de deletar
   return (
     <PaymentContext.Provider value={{ payments, createPayment, updatePayment, listPayment, deletePayment }}>
       {children}
