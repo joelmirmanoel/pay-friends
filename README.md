@@ -35,7 +35,6 @@ A CRUD focused on financial management, developed to simplify expense tracking. 
 - Authentication: Login system with error handling, designed for single-user use.
 - State Management: Use of useContext to ensure data consistency throughout the application.
 - Styling: Application of Styled Components to create an elegant and responsive interface.
-- Forms: Integration with React Hook Form for efficient form handling.
 
 ## Technologies
 
