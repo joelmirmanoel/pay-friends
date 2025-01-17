@@ -33,8 +33,6 @@ export function Login({ setIsLogin }: ILoginProps) {
     } else {
       setErrorEmail(true);
     }
-
-    console.log('Hello', emailValue, passwordlValue);
   }
 
   return (

@@ -24,13 +24,11 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
       setData(selectedPayment.data);
       setValor(selectedPayment.valor);
       setTitulo(selectedPayment.titulo);
-      //setId(selectedPayment.id); // Atribuindo o ID selecionado
     } else {
       setUsuario('');
       setData('');
       setValor('');
       setTitulo('');
-      //setId(0); // Resetando o ID
     }
   }, [selectedPayment, isOpen]);
 
@@ -48,15 +46,13 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
       setTitulo('');
       setId(newId);
     }
-    console.log(JSON.stringify(handleSavePayment, null, 2));
     onRequestClose();
   }
 
-  // Função de excluir pagamento
   function handleDeletePayment() {
     if (selectedPayment) {
-      context?.deletePayment(selectedPayment.id); // Excluindo o pagamento com base no id
-      onRequestClose(); // Fecha o modal após a exclusão
+      context?.deletePayment(selectedPayment.id);
+      onRequestClose();
     }
   }
 
@@ -69,8 +65,6 @@ export function AddPaymentModal({ isOpen, onRequestClose, selectedPayment }: IAd
     >
       <Title>{selectedPayment ? 'Atualizar' : 'Adicionar'} Pagamento</Title>
       <ContentInput>
-        {/* <Input isError={false} placeholder="id" value={id} onChange={event => setId(event.target.value)} /> */}
-
         <Input
           isError={false}
           placeholder="Usuario"
